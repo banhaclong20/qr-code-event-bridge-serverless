@@ -13,6 +13,16 @@ provider:
           Action: events:PutEvents
           Resource: !GetAtt EventBus.Arn
 
+custom:
+  apiGatewayServiceProxies:
+    - eventbridge:
+        path: /eventbridge
+        method: post
+        source: 'fuel-app'
+        detailType: 'user-signup'
+        eventBusName: { Ref: EventBus }
+        cors: true
+
 functions:
   generateEvent:
     handler: functions/generateEvent.handler
@@ -35,3 +45,6 @@ resources:
   Outputs:
     EventBusName:
       Value: !Ref EventBus
+
+plugins:
+  - serverless-apigateway-service-proxy
