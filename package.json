@@ -1,0 +1,15 @@
+{
+  "name": "qr-code-event-bridge-serverless",
+  "version": "1.0.0",
+  "description": "QR Code App using EventBridge, SQS and Serverless",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Tran",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^3.30.1",
+    "serverless-offline": "^12.0.4"
+  }
+}

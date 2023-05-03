@@ -1,0 +1,5 @@
+# Create eventBridge eventBus
+EventBus:
+  Type: AWS::Events::EventBus
+  Properties:
+    Name: QR_CODE_EVENT_BUS

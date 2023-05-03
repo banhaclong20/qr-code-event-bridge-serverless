@@ -1,0 +1,22 @@
+service: qr-code-event-bridge-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  generateEvent:
+    handler: functions/generateEvent.handler
+    events:
+      - http:
+          path: /generate-qr-code
+          method: post
+
+resources:
+  Resources: ${file(resources.yml)}
+  Outputs:
+    EventBusName:
+      Value: !Ref EventBus
