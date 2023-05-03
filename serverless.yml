@@ -6,10 +6,18 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: events:PutEvents
+          Resource: !GetAtt EventBus.Arn
 
 functions:
   generateEvent:
     handler: functions/generateEvent.handler
+    environment:
+      EVENT_BUS_NAME: !Ref EventBus
     events:
       - http:
           path: /generate-qr-code
